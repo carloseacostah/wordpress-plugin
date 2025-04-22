@@ -1,0 +1,37 @@
+
+.modulo {
+  background-color: $color-secondary;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+
+  &__titulo {
+    color: $color-primary;
+    font-size: 24px;
+  }
+
+  &__descripcion {
+    color: $color-text;
+    margin: 10px 0;
+  }
+
+  &__boton {
+    background-color: $color-primary;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    &__titulo {
+      font-size: 20px;
+    }
+  }
+}
