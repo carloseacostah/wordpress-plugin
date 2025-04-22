@@ -1,0 +1,263 @@
+// Variables de color (según la apariencia del diseño)
+$color-primary: #000; // Negro para la barra principal
+$color-secondary: #fdd835; // Amarillo para el hover/activo
+$color-text-primary: #ffffff; // Blanco para el texto principal
+$color-text-secondary: #333333; // Gris oscuro para texto secundario
+$color-text-hover-submenu: $color-primary; // Negro para el texto al hacer hover en el submenú
+$color-background-submenu: #333; // Gris oscuro para el fondo del submenú desplegable
+
+// Tipografía (ajusta según la fuente del diseño)
+$font-family-primary: sans-serif;
+$font-size-base: 16px;
+
+// Reset box-sizing para todos los elementos
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Estilos para la navegación principal
+.main-navigation {
+    background-color: $color-primary;
+    color: $color-text-primary;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px 5px; /* Espacio para la barra amarilla */
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%; /* Se coloca justo debajo del menú */
+        width: 100%;
+        height: 0; /* Inicialmente sin altura */
+        background-color: #2a2925; /* Color amarillo */
+        transition: height 0.3s ease;
+        z-index: 5; /* Debajo del contenido del menú */
+    }
+
+    &:hover::after {
+        height: 50px; /* Altura del espacio gris al hacer hover */
+    }
+}
+
+.main-navigation__logo {
+    margin-right: 30px;
+
+    img {
+        height: 30px; // Ajusta la altura del logo
+    }
+}
+
+.main-navigation__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+.main-navigation__item {
+    margin-left: 20px;
+    position: relative;
+    width: fit-content;
+    padding-bottom: 0; /* Sin padding inferior en el item */
+    box-sizing: border-box;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &--active-hover .main-navigation__link {
+        color: $color-secondary;
+    }
+
+    &--has-submenu {
+        position: static; /* Para que el submenu absoluto se posicione correctamente */
+
+        &:hover > .submenu,
+        &.is-open > .submenu {
+            display: flex;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%; /* Mismo ancho que el menú principal */
+            //background-color: $color-background-submenu;
+            //box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            padding: 20px;
+            gap: 10px; /* Espacio entre los elementos del submenú */
+        }
+    }
+
+   
+}
+
+.main-navigation__link {
+    display: block;
+    color: $color-text-primary;
+    text-decoration: none !important;
+    padding: 10px 15px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.main-navigation__link:hover {
+    color: $color-secondary;
+}
+
+.main-navigation__actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    position: relative;
+    z-index: 10;
+
+    > * {
+        margin-left: 15px;
+    }
+}
+
+.main-navigation__action-icon {
+    color: $color-text-primary;
+    font-size: 1.2em;
+    text-decoration: none !important;
+}
+
+.main-navigation__user {
+    position: relative;
+    z-index: 10;
+}
+
+.main-navigation__button {
+    background-color: $color-secondary;
+    color: $color-primary;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.main-navigation__button:hover {
+    background-color: darken($color-secondary, 10%);
+}
+
+// Estilos del submenú desplegable original
+.submenu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* Mismo ancho que el menú principal */
+    color: $color-text-primary;
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    //box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    box-sizing: border-box;
+    flex-direction: row;
+    gap: 10px; /* Espacio entre los elementos del submenú */
+}
+
+.submenu__item {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.submenu__link {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none !important;
+    color: $color-text-primary;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #333; /* Fondo gris oscuro para los elementos */
+}
+
+.submenu__link:hover {
+    background-color: $color-secondary; /* Fondo amarillo al hacer hover */
+    color: $color-text-hover-submenu; /* Texto negro al hacer hover */
+}
+
+.submenu--user {
+    min-width: 150px;
+    right: 0;
+    left: auto;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.submenu--user .submenu__link {
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 0;
+    color: $color-text-primary;
+}
+
+.submenu--user .submenu__link:hover {
+    color: $color-text-primary;
+}
+
+// Estilos para el contenedor del submenú global (barra inferior amarilla)
+.global-submenu-container {
+    width: 100%;
+    background-color: transparent; /* El fondo amarillo lo controla el ::after del menú */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.global-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.global-submenu__parent {
+    display: flex;
+    gap: 10px;
+}
+
+.global-submenu__link {
+    display: block;
+    color: $color-text-primary;
+    text-decoration: none !important;
+    padding: 8px 15px;
+    white-space: nowrap;
+    border-radius: 5px;
+    //background-color: #333; /* El fondo se controla por el estado del hover en JS */
+}
+
+.global-submenu__link:hover {
+    background-color: $color-secondary;
+    color: $color-primary;
+}

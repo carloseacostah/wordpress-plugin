@@ -1,0 +1,37 @@
+{
+  "name": "mi-prueba-tecnica-frontend",
+  "version": "1.0.0",
+  "description": "Frontend assets for the mi prueba tecnica plugin",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --watch --config webpack.config.js"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "frontend",
+    "scss",
+    "javascript"
+  ],
+  "author": "Tu Nombre",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.26.3",
+    "@wordpress/block-editor": "^14.17.0",
+    "@wordpress/blocks": "^14.11.0",
+    "@wordpress/components": "^29.8.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.0.0",
+    "@wordpress/i18n": "^5.22.0",
+    "babel-loader": "^9.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.10.0",
+    "mini-css-extract-plugin": "^2.8.0",
+    "sass": "^1.71.1",
+    "sass-loader": "^14.1.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

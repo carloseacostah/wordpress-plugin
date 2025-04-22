@@ -1,0 +1,29 @@
+// Variables de color
+$color-principal: #007bff;
+$color-secundario: #6c757d;
+$color-texto: #333;
+$espaciado-medio: 1rem;
+
+.mi-modulo {
+    background-color: #f8f9fa;
+    padding: $espaciado-medio;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+
+    &__texto {
+        color: $color-texto;
+        margin-bottom: 0;
+    }
+
+    &.mi-clase-personalizada {
+        background-color: lightgreen;
+        border-color: green;
+    }
+}
+
+// Ejemplo de diseño responsive (muy básico)
+@media (max-width: 768px) {
+    .mi-modulo {
+        padding: $espaciado-medio / 2;
+    }
+}
